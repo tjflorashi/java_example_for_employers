@@ -21,7 +21,9 @@ public class FlexGrid<T> implements IGrid<T> {
     }
 
     public T getItem(GridCell cell){
-
+        if (!this.cells.contains(cell)){
+            throw new IllegalArgumentException();
+        }
         for(GridCell c: cells){
             if(cell.x==c.x && cell.y==c.y){
                 return cellNames.get(cell.toString());
