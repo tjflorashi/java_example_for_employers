@@ -9,8 +9,8 @@ import java.util.Iterator;
 
 public class FlexGrid<T> implements IGrid<T> {
 
-    private ArrayList<GridCell> cells = new ArrayList<GridCell>();
-    private HashMap<String, T> cellNames = new HashMap<String, T>();
+    private ArrayList<GridCell> cells = new ArrayList<>();
+    private HashMap<String, T> cellNames = new HashMap<>();
 
     public FlexGrid(){
     }
@@ -21,6 +21,7 @@ public class FlexGrid<T> implements IGrid<T> {
     }
 
     public T getItem(GridCell cell){
+
         for(GridCell c: cells){
             if(cell.x==c.x && cell.y==c.y){
                 return cellNames.get(cell.toString());
@@ -36,6 +37,7 @@ public class FlexGrid<T> implements IGrid<T> {
     }
 
     public boolean hasCell(GridCell cell){
+
         for(GridCell c: cells){
             if(cell.x == c.x && cell.y == c.y){
                 return true;
@@ -46,6 +48,7 @@ public class FlexGrid<T> implements IGrid<T> {
     }
 
     public void addCell(GridCell cell, T t){
+
         this.cellNames.put(cell.toString(), t);
     }
 

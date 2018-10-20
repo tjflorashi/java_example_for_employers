@@ -33,6 +33,7 @@ public class RectangularGridSerializerDeserializer implements IGridSerializerDes
 
         while (itr.hasNext()){
             GridCell cell = itr.next();
+
             cells.add(cell);
 
             if (cell.x > max_width){
@@ -59,8 +60,6 @@ public class RectangularGridSerializerDeserializer implements IGridSerializerDes
         }
 
         GridCell corner = GridCell.at(corner_x, corner_y); // dummy copy
-        int actual_width = max_width - corner.x + 1;
-        int actual_height = max_height - corner.y + 1;
 
         for (int x = corner.x; x < corner.x + max_width; x++){ // are you rectangle
             for (int y = corner.y; y < corner.y + max_height; y++){
@@ -69,6 +68,9 @@ public class RectangularGridSerializerDeserializer implements IGridSerializerDes
                 }
             }
         }
+
+        int actual_width = max_width - corner.x + 1;
+        int actual_height = max_height - corner.y + 1;
 
 
         StringBuilder s = new StringBuilder()
@@ -102,11 +104,13 @@ public class RectangularGridSerializerDeserializer implements IGridSerializerDes
         }
 
         String[] corner_coords = reader.readLine().split(" ")[1].split(":");
+
         GridCell corner = GridCell.at(Integer.parseInt(corner_coords[0]),
                 Integer.parseInt(corner_coords[1]));
         RectangularGrid<T> grid = new RectangularGrid<T>(width, height, corner);
 
         String line;
+
         while ((line = reader.readLine()) != null){
             String[] grid_coords = line.split(" ")[0].split(":");
             grid.addCell(GridCell.at(Integer.parseInt(grid_coords[0])
