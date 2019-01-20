@@ -1,3 +1,6 @@
+## NOTE 
+U of T Students: DO NOT use. 
+
 ## Learning goals
 
  * Serialization
